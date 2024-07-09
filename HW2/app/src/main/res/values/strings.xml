@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ProfsoftHW</string>
+    <string name="second_activity">Активити 2</string>
+    <string name="notification">Уведомление</string>
+    <string name="hello_world">Hello World!</string>
+</resources>

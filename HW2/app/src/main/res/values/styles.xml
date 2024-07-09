@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonStyleGray" parent="ShapeAppearanceOverlay.Material3.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/shape_button</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>
