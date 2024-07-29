@@ -43,4 +43,19 @@ class ItemAdapter : Adapter<ViewHolder>() {
         this.items.addAll(items)
         notifyDataSetChanged()
     }
+
+    fun deleteItem(item: AdapterItem, items: MutableList<AdapterItem>): MutableList<AdapterItem> {
+        val position = items.indexOf(item)
+        items.remove(item)
+        this.items.remove(item)
+        notifyItemRemoved(position)
+        return items
+    }
+
+    fun addItem(item: AdapterItem, items: MutableList<AdapterItem>): MutableList<AdapterItem> {
+        items.add(item)
+        this.items.add(item)
+        notifyItemChanged(items.size)
+        return items
+    }
 }

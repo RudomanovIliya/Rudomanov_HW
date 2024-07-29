@@ -59,19 +59,16 @@ class MainActivity : AppCompatActivity() {
         )
         recyclerView.adapter = adapter.apply {
             itemListener = ItemListener { item ->
-                items.remove(item)
-                adapter.setItems(items)
+                deleteItem(item, items)
             }
         }
         binding.buttonAdd.setOnClickListener {
             if (checkItem) {
-                items.add(SmallItem("item 1"))
                 checkItem = !checkItem
-                adapter.setItems(items)
+                adapter.addItem(SmallItem("item 1"), items)
             } else {
-                items.add(BigItem("item 1"))
                 checkItem = !checkItem
-                adapter.setItems(items)
+                adapter.addItem(BigItem("item 1"), items)
             }
         }
         recyclerView.addItemDecoration(RecyclerViewItemDecoration(6.toPx()))
