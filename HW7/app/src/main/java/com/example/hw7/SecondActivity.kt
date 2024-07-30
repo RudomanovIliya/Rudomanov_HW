@@ -7,7 +7,9 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -59,13 +62,14 @@ fun SecondScreen(modifier: Modifier = Modifier, text: String?) {
         modifier = modifier.padding(top = 50.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-        Image(
+        Spacer(
             modifier = Modifier
                 .width(260.dp)
-                .height(112.dp),
-            painter = painterResource(id = R.drawable.rectangle),
-            contentDescription = ""
+                .height(112.dp)
+                .background(
+                    colorResource(id = R.color.red),
+                    shape = RoundedCornerShape(topStart = 12.dp, bottomEnd = 32.dp)
+                )
         )
         Image(
             modifier = Modifier
