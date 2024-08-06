@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">HW8</string>
+    <string name="main">Главная</string>
+    <string name="profile">Профиль</string>
+    <string name="text_birtday_day">Дата рождения: </string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="ivan">Иван</string>
+    <string name="ivanov">Иванов</string>
+    <string name="ivanovich">Иванович</string>
+    <string name="_01_01_2001">01.01.2001</string>
+    <string name="city">Город</string>
+    <string name="saratov">Саратов</string>
+    <string name="about">О себе</string>
+    <string name="wtf">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="editing_profile">Редактирование профиля</string>
+    <string name="name">"Имя: "</string>
+    <string name="surname">"Фамилия: "</string>
+    <string name="father_name">"Отчество: "</string>
+    <string name="ivann">Иван</string>
+</resources>
