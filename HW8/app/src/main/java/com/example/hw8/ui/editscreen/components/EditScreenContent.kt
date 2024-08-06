@@ -95,20 +95,20 @@ fun EditScreenContent(
                 .align(Alignment.CenterHorizontally)
                 .padding(bottom = 16.dp), text = "Сохранить",
             onClick = {
-                navController.popBackStack()
-                navController.currentBackStackEntry?.savedStateHandle?.set(NAME_KEY, textNameArg)
-                navController.currentBackStackEntry?.savedStateHandle?.set(
+                navController.previousBackStackEntry?.savedStateHandle?.set(NAME_KEY, textNameArg)
+                navController.previousBackStackEntry?.savedStateHandle?.set(
                     SURNAME_KEY,
                     textSurnameArg
                 )
-                navController.currentBackStackEntry?.savedStateHandle?.set(
+                navController.previousBackStackEntry?.savedStateHandle?.set(
                     FATHERNAME_KEY,
                     textFathernameArg
                 )
-                navController.currentBackStackEntry?.savedStateHandle?.set(
+                navController.previousBackStackEntry?.savedStateHandle?.set(
                     BIRTHDAYDATE_KEY,
                     texBirthdayDateArg
                 )
+                navController.popBackStack()
                 onButtonClick()
             }
         )
