@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MySplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/yellow</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash</item>
+        <item name="postSplashScreenTheme">@style/Theme.HW_Together</item>
+    </style>
+    <style name="Theme.HW_Together" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
