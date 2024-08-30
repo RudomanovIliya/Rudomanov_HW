@@ -50,8 +50,7 @@ class MainActivity : ComponentActivity() {
 //                if (token.isEmpty()) {
 //                    startDestination = AUTHORIZATION_REGISTER_SCREEN_ROUTE
 //                } else {
-            //    startDestination = MAIN_TAB_HOST_ROUTE
-                startDestination= MAIN_SCREEN_ROUTE
+                startDestination = MAIN_TAB_HOST_ROUTE
                 Scaffold(
                     containerColor = Color.Transparent,
                     bottomBar = {
