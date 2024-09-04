@@ -21,7 +21,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.ImageLoader
 import coil.compose.AsyncImage
+import coil.compose.AsyncImagePainter
 import com.example.hw_together.R
 import com.example.hw_together.ui.addnotescreen.AddNoteScreenViewModel
 import com.example.hw_together.ui.components.CustomButton
@@ -34,7 +36,9 @@ import org.orbitmvi.orbit.compose.collectAsState
 fun AddNoteScreenContent(
     modifier: Modifier = Modifier,
     bottomBarHeight: Dp,
-    viewModel: AddNoteScreenViewModel
+    viewModel: AddNoteScreenViewModel,
+    onLeftSwitchClick: () -> Unit,
+    onRightSwitchClick: () -> Unit,
 ) {
     val state = viewModel.collectAsState().value
     Column(modifier.fillMaxSize()) {
@@ -43,8 +47,9 @@ fun AddNoteScreenContent(
             CustomSwitch(
                 modifier = Modifier.padding(top = 16.dp),
                 state = state.pathNote.path,
-                onLeftClick = remember { { viewModel.toLocalSwitch() } },
-                onRightClick = remember { { viewModel.toCommunitySwitch() } })
+                onLeftClick = onLeftSwitchClick,
+                onRightClick = onRightSwitchClick
+            )
             CustomBasicTextFieldHeaderAddScreen(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -111,38 +116,17 @@ fun AddNoteScreenContent(
             isLoading = false//загрузка?
         )
     }
-    if (state.visibilityBottomSheet) {
-        CustomModalBottomSheet(
-            onDismissRequest = remember { { viewModel.visibilityBottomSheen() } },
-            onTextClick = remember { { viewModel.addNoteText() } },
-            onImageClick = remember {
-                {
-                    viewModel.visibilityDialog()
-                    viewModel.visibilityBottomSheen()
-                }
-            })
-    }
-    if (state.visibilityDialog) {
-        CustomDialog(
-            value = state.imageText,
-            onValueChange = remember { { viewModel.urlChange(it) } },
-            onDismissRequest = remember { { viewModel.visibilityDialog() } },
-            onAddClick = remember { { viewModel.urlSave() } },
-            onCancelClick = remember { { viewModel.visibilityDialog() } })
-    }
-    if (state.visibilityErrorDialog) {
-        CustomErrorDialog(onDismissRequest = remember { { viewModel.visibilityErrorDialog() } })
-    }
+
 }
 
 @Composable
 @Preview
 fun AddNoteScreenContentPreview() {
-    HW_TogetherTheme {
-        AddNoteScreenContent(
-            modifier = Modifier.background(color = Color.White),
-            bottomBarHeight = 0.dp,
-            viewModel = hiltViewModel()
-        )
-    }
+//    HW_TogetherTheme {
+//        AddNoteScreenContent(
+//            modifier = Modifier.background(color = Color.White),
+//            bottomBarHeight = 0.dp,
+//            viewModel = hiltViewModel()
+//        )
+//    }
 }
