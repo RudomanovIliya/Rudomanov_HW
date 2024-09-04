@@ -11,13 +11,13 @@ import org.orbitmvi.orbit.compose.collectAsState
 
 @Composable
 fun AuthorizationLoginScreen(
+    viewModel: AuthorizationLoginScreenViewModel,
     navController: NavController,
 ) {
-    val viewModel: AuthorizationLoginScreenViewModel = hiltViewModel()
     val state = viewModel.collectAsState().value
     if (state.isRegister) {
         navController.navigateToMainTab()
     }
     AuthorizationLoginScreenContent(
-        onClickRegister = { navController.navigateToRegisterScreen() })
+        onClickRegister = { navController.navigateToRegisterScreen() }, viewModel = viewModel)
 }

@@ -12,7 +12,7 @@ const val MAIN_TAB_HOST_ROUTE = "main_tab_host_route"
 
 fun NavController.navigateToMainTab() {
     this.navigate(MAIN_TAB_HOST_ROUTE) {
-        popUpTo(MAIN_TAB_HOST_ROUTE) {
+        popUpTo(0) {
             saveState = true
         }
         launchSingleTop = true

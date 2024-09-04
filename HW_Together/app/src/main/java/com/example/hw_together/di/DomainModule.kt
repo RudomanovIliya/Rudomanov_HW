@@ -1,15 +1,17 @@
 package com.example.hw_together.di
 
-import com.example.hw_together.data.api.ApiAuthorization
-import com.example.hw_together.data.api.ApiNotes
+import com.example.hw_together.data.api.ApiRequests
 import com.example.hw_together.data.database.NotesDataBase
 import com.example.hw_together.data.repository.AuthorizationRepositoryImpl
 import com.example.hw_together.data.repository.DataBaseRepositoryImp
+import com.example.hw_together.data.repository.NoteRepositoryImpl
 import com.example.hw_together.domain.repository.AuthorizationRepository
 import com.example.hw_together.domain.repository.DataBaseRepository
+import com.example.hw_together.domain.repository.NoteRepository
 import com.example.hw_together.domain.usecases.LoginUseCase
 import com.example.hw_together.domain.usecases.RegisterUseCase
-import com.example.hw_together.domain.usecases.SaveNoteUseCase
+import com.example.hw_together.domain.usecases.SaveNoteCommunityUseCase
+import com.example.hw_together.domain.usecases.SaveNoteLocalUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,8 +24,8 @@ class DomainModule {
 
     @Provides
     @Singleton
-    fun provideAuthorizationRepository(apiAuthorization: ApiAuthorization): AuthorizationRepository {
-        return AuthorizationRepositoryImpl(apiAuthorization = apiAuthorization)
+    fun provideAuthorizationRepository(apiRequests: ApiRequests): AuthorizationRepository {
+        return AuthorizationRepositoryImpl(apiRequests = apiRequests)
     }
 
     @Provides
@@ -46,8 +48,19 @@ class DomainModule {
 
     @Provides
     @Singleton
-    fun provideSaveNoteUseCase(dataBaseRepository: DataBaseRepository): SaveNoteUseCase {
-        return SaveNoteUseCase(dataBaseRepository = dataBaseRepository)
+    fun provideSaveNoteLocalUseCase(dataBaseRepository: DataBaseRepository): SaveNoteLocalUseCase {
+        return SaveNoteLocalUseCase(dataBaseRepository = dataBaseRepository)
     }
 
+    @Provides
+    @Singleton
+    fun provideNoteRepository(apiRequests: ApiRequests): NoteRepository {
+        return NoteRepositoryImpl(apiRequests = apiRequests)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSaveNoteCommunityUseCase(noteRepository: NoteRepository): SaveNoteCommunityUseCase {
+        return SaveNoteCommunityUseCase(noteRepository = noteRepository)
+    }
 }

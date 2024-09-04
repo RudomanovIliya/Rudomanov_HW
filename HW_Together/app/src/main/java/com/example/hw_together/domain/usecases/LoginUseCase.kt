@@ -5,6 +5,7 @@ import com.example.hw_together.domain.models.AuthorizationLoginUser
 import com.example.hw_together.domain.models.AuthorizationRegisterUser
 import com.example.hw_together.domain.repository.AuthorizationRepository
 import retrofit2.Response
+import javax.inject.Inject
 
 class LoginUseCase(
     private val authorizationRepository: AuthorizationRepository

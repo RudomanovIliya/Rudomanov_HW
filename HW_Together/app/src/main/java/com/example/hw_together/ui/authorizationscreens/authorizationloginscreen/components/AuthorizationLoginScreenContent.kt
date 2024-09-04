@@ -31,10 +31,10 @@ import org.orbitmvi.orbit.compose.collectAsState
 
 @Composable
 fun AuthorizationLoginScreenContent(
+    viewModel: AuthorizationLoginScreenViewModel,
     onClickRegister: () -> Unit,
 ) {
     val context = LocalContext.current
-    val viewModel: AuthorizationLoginScreenViewModel = hiltViewModel()
     val state = viewModel.collectAsState().value
     Box(
         modifier = Modifier
@@ -109,6 +109,6 @@ fun AuthorizationLoginScreenContent(
 @Composable
 fun AuthorizationLoginScreenPreview() {
     HW_TogetherTheme {
-        AuthorizationLoginScreenContent(onClickRegister = {})
+        AuthorizationLoginScreenContent(onClickRegister = {}, viewModel = hiltViewModel())
     }
 }

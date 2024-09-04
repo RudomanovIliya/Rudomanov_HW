@@ -48,14 +48,11 @@ class MainActivity : ComponentActivity() {
             val isBottomBarVisible = remember { mutableStateOf(false) }
             val navController = rememberNavController()
             HW_TogetherTheme {
-                var startDestination = ""
-//                if (token.isEmpty()) {
-//                  startDestination = AUTHORIZATION_REGISTER_SCREEN_ROUTE
-//                } else {
-                    //   startDestination = MAIN_TAB_HOST_ROUTE
-
-
-                startDestination= ADD_NOTE_SCREEN_ROUTE
+                val startDestination = if (token.isEmpty()) {
+                    AUTHORIZATION_REGISTER_SCREEN_ROUTE
+                } else {
+                    MAIN_TAB_HOST_ROUTE
+                }
                 Scaffold(
                     containerColor = Color.Transparent,
                     bottomBar = {

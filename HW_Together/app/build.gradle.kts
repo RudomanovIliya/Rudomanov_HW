@@ -104,5 +104,4 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.3.0-rc01")
 
     implementation(libs.coil)
-
 }

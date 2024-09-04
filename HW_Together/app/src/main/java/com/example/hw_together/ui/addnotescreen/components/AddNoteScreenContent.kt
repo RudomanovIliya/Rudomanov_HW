@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,8 +31,11 @@ import com.example.hw_together.ui.theme.LocalColors
 import org.orbitmvi.orbit.compose.collectAsState
 
 @Composable
-fun AddNoteScreenContent(modifier: Modifier = Modifier, bottomBarHeight: Dp) {
-    val viewModel: AddNoteScreenViewModel = hiltViewModel()
+fun AddNoteScreenContent(
+    modifier: Modifier = Modifier,
+    bottomBarHeight: Dp,
+    viewModel: AddNoteScreenViewModel
+) {
     val state = viewModel.collectAsState().value
     Column(modifier.fillMaxSize()) {
         CustomToolBarAddScreen()
@@ -102,7 +106,7 @@ fun AddNoteScreenContent(modifier: Modifier = Modifier, bottomBarHeight: Dp) {
                     color = LocalColors.current.lightBlack
                 ),
             text = "Готово",
-            onClick = remember { { viewModel.saveNoteLocal() } },
+            onClick = remember { { viewModel.saveNote() } },
             textColor = Color.White,
             isLoading = false//загрузка?
         )
@@ -119,29 +123,16 @@ fun AddNoteScreenContent(modifier: Modifier = Modifier, bottomBarHeight: Dp) {
             })
     }
     if (state.visibilityDialog) {
-        Log.e("e", state.note.content[state.note.content.size - 1].image)
         CustomDialog(
             value = state.imageText,
             onValueChange = remember { { viewModel.urlChange(it) } },
             onDismissRequest = remember { { viewModel.visibilityDialog() } },
-            onAddClick =
-            {
-                if (state.note.content[state.note.content.size - 1].image.isEmpty()) {
-                    viewModel.urlSave()
-                    Log.e("e", "then")
-                } else {
-                    Log.e("e", "else")
-                    viewModel.addNoteImage()
-                    viewModel.urlSave()
-                }
-
-            },
+            onAddClick = remember { { viewModel.urlSave() } },
             onCancelClick = remember { { viewModel.visibilityDialog() } })
     }
     if (state.visibilityErrorDialog) {
         CustomErrorDialog(onDismissRequest = remember { { viewModel.visibilityErrorDialog() } })
     }
-    Log.e("e", state.visibilityBottomSheet.toString() + " " + state.visibilityDialog.toString())
 }
 
 @Composable
@@ -150,7 +141,8 @@ fun AddNoteScreenContentPreview() {
     HW_TogetherTheme {
         AddNoteScreenContent(
             modifier = Modifier.background(color = Color.White),
-            bottomBarHeight = 0.dp
+            bottomBarHeight = 0.dp,
+            viewModel = hiltViewModel()
         )
     }
 }
