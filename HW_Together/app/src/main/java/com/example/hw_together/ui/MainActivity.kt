@@ -21,6 +21,8 @@ import com.example.hw_together.ui.components.CustomBottomBar
 import com.example.hw_together.ui.components.FAVORITES_TAB
 import com.example.hw_together.ui.components.MAIN_TAB
 import com.example.hw_together.ui.components.PROFILE_TAB
+import com.example.hw_together.ui.navigation.ADD_NOTE_SCREEN_ROUTE
+import com.example.hw_together.ui.navigation.AUTHORIZATION_REGISTER_SCREEN_ROUTE
 import com.example.hw_together.ui.navigation.MAIN_SCREEN_ROUTE
 import com.example.hw_together.ui.navigation.MAIN_TAB_HOST_ROUTE
 import com.example.hw_together.ui.navigation.NavHost
@@ -48,9 +50,12 @@ class MainActivity : ComponentActivity() {
             HW_TogetherTheme {
                 var startDestination = ""
 //                if (token.isEmpty()) {
-//                    startDestination = AUTHORIZATION_REGISTER_SCREEN_ROUTE
+//                  startDestination = AUTHORIZATION_REGISTER_SCREEN_ROUTE
 //                } else {
-                startDestination = MAIN_TAB_HOST_ROUTE
+                    //   startDestination = MAIN_TAB_HOST_ROUTE
+
+
+                startDestination= ADD_NOTE_SCREEN_ROUTE
                 Scaffold(
                     containerColor = Color.Transparent,
                     bottomBar = {

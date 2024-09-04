@@ -7,8 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.hw_together.domain.usecases.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.orbitmvi.orbit.ContainerHost
-import org.orbitmvi.orbit.syntax.simple.intent
-import org.orbitmvi.orbit.syntax.simple.reduce
+import org.orbitmvi.orbit.annotation.OrbitExperimental
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
@@ -23,13 +22,13 @@ class AuthorizationLoginScreenViewModel @Inject constructor(
         AuthorizationLoginState()
     )
 
-    fun phoneChange(phone: String) = intent {
+    fun phoneChange(phone: String) = blockingIntent {
         reduce {
             state.copy(authorizationLoginUser = state.authorizationLoginUser.copy(phone = phone))
         }
     }
 
-    fun passwordChange(password: String) = intent {
+    fun passwordChange(password: String) = blockingIntent {
         reduce {
             state.copy(
                 authorizationLoginUser = state.authorizationLoginUser.copy(

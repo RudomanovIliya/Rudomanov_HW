@@ -1,6 +1,7 @@
 package com.example.hw_together.ui.authorizationscreens.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,22 +38,6 @@ fun CustomBasicTextFieldAuthorization(
     defaultValue: String,
     onValueChange: (String) -> Unit
 ) {
-//    if (value.isEmpty()) {
-//        Text(
-//            modifier = modifier
-//                .padding(top = 12.dp)
-//                .fillMaxWidth()
-//                .height(36.dp)
-//                .background(
-//                    shape = RoundedCornerShape(8.dp),
-//                    color = LocalColors.current.transparentBlack
-//                )
-//                .padding(start = 12.dp)
-//                .wrapContentHeight(),
-//            text = defaultValue,
-//            style = LocalTypography.current.bodyTextFieldAuthorization
-//        )
-//    } else {
     BasicTextField(
         modifier = modifier
             .padding(top = 12.dp)
@@ -66,9 +51,9 @@ fun CustomBasicTextFieldAuthorization(
         value = value,
         onValueChange = onValueChange,
         decorationBox = { innerTextField ->
-            Row(
+            Box(
                 modifier = Modifier.padding(start = 12.dp),
-                verticalAlignment = Alignment.CenterVertically,
+                contentAlignment = Alignment.CenterStart
             ) {
                 if (value.isEmpty()) {
                     Text(
@@ -80,7 +65,6 @@ fun CustomBasicTextFieldAuthorization(
             }
         },
     )
-//    }
 }
 
 @Composable
@@ -106,9 +90,9 @@ fun CustomBasicTextFieldPassword(
         onValueChange = onValueChange,
         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
         decorationBox = { innerTextField ->
-            Row(
+            Box(
                 modifier = Modifier.padding(start = 12.dp),
-                verticalAlignment = Alignment.CenterVertically,
+                contentAlignment = Alignment.CenterStart
             ) {
                 val image = if (passwordVisible)
                     Icons.Filled.Visibility
@@ -121,8 +105,7 @@ fun CustomBasicTextFieldPassword(
                     )
                 }
                 innerTextField()
-                Spacer(modifier = Modifier.weight(1f))
-                IconButton(modifier = Modifier,
+                IconButton(modifier = Modifier.align(Alignment.CenterEnd),
                     onClick = { passwordVisible = !passwordVisible }) {
                     Icon(
                         imageVector = image, null, modifier = Modifier

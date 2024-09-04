@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -63,22 +64,22 @@ fun AuthorizationRegisterScreenContent(
             CustomBasicTextFieldAuthorization(
                 value = state.authorizationRegisterUser.name,
                 defaultValue = "Имя",
-                onValueChange = { viewModel.nameChange(it) }
+                onValueChange = remember { { viewModel.nameChange(it) } }
             )
             CustomBasicTextFieldAuthorization(
                 value = state.authorizationRegisterUser.surname,
                 defaultValue = "Фамилия",
-                onValueChange = { viewModel.surnameChange(it) }
+                onValueChange = remember { { viewModel.surnameChange(it) } }
             )
             CustomBasicTextFieldAuthorization(
                 value = state.authorizationRegisterUser.phone,
                 defaultValue = "Номер телефона",
-                onValueChange = { viewModel.phoneChange(it) }
+                onValueChange = remember { { viewModel.phoneChange(it) } }
             )
             CustomBasicTextFieldPassword(
                 value = state.authorizationRegisterUser.passwordHashed,
                 defaultValue = "Пароль",
-                onValueChange = { viewModel.passwordChange(it) }
+                onValueChange = remember { { viewModel.passwordChange(it) } }
             )
         }
         Column(

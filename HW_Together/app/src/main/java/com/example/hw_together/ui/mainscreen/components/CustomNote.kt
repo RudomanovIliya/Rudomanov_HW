@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,9 +30,8 @@ fun CustomNote(
 ) {
     Box(
         modifier = modifier
-            .height(112.dp)
+           // .height(112.dp)
             .fillMaxWidth()
-        // .width(320.dp)
     ) {
         Column(
             modifier = Modifier
@@ -39,13 +39,13 @@ fun CustomNote(
                 .padding(top = 12.dp)
                 .fillMaxWidth()
                 .background(shape = RoundedCornerShape(8.dp), color = LocalColors.current.yellow)
-                .padding(top = 12.dp, start = 12.dp, bottom = 12.dp)
+                .padding(top = 12.dp, start = 12.dp, bottom = 12.dp, end = 12.dp)
         ) {
             Text(
-                minLines = 2,
+                minLines = 1,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.width(310.dp),
+                modifier = Modifier.wrapContentWidth(),
                 text = titleText,
                 style = LocalTypography.current.bigBody
             )
@@ -54,7 +54,7 @@ fun CustomNote(
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .padding(top = 4.dp)
-                    .width(320.dp),
+                    .wrapContentWidth(),
                 text = bodyText,
                 style = LocalTypography.current.subHeaderAuthorization,
                 color = LocalColors.current.blueLagoon

@@ -5,15 +5,24 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -38,7 +47,12 @@ fun CustomBottomBar(
     val transparentBlackColor = LocalColors.current.transparentBlack
     Row(
         modifier = modifier
-            .safeDrawingPadding()
+            //.safeDrawingPadding()
+            .padding(
+                bottom = WindowInsets.systemBars
+                    .asPaddingValues()
+                    .calculateBottomPadding()
+            )
             .background(Color.White)
             .fillMaxWidth()
             .height(56.dp)
@@ -50,36 +64,28 @@ fun CustomBottomBar(
                     end = Offset(size.width, 0f),
                 )
             }
-            .padding(horizontal = 16.dp)
+            .padding(start = 16.dp, end = 8.dp)
             .wrapContentWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         CustomBottomBarItem(
-            modifier = Modifier
-                .padding(end = 8.dp)
-                .clickable { onTabClick(MAIN_TAB) },
+            onClick = { onTabClick(MAIN_TAB) },
             imgResource = R.drawable.ic_home
         )
         CustomBottomBarItem(
-            modifier = Modifier
-                .padding(end = 8.dp)
-                .clickable { onTabClick(FAVORITES_TAB) },
+            onClick = { onTabClick(FAVORITES_TAB) },
             imgResource = R.drawable.ic_save
         )
         CustomBottomBarItem(
-            modifier = Modifier
-                .padding(end = 8.dp)
-                .clickable { onTabClick(ADD_TAB) },
+            onClick = { onTabClick(ADD_TAB) },
             imgResource = R.drawable.ic_add
         )
         CustomBottomBarItem(
-            modifier = Modifier
-                .padding(end = 8.dp)
-                .clickable { onTabClick(CHAT_TAB) },
+            onClick = { onTabClick(CHAT_TAB) },
             imgResource = R.drawable.ic_chat
         )
         CustomBottomBarItem(
-            modifier = Modifier.clickable { onTabClick(PROFILE_TAB) },
+            onClick = { onTabClick(PROFILE_TAB) },
             imgResource = R.drawable.ic_profile
         )
     }
@@ -88,10 +94,14 @@ fun CustomBottomBar(
 @Composable
 fun CustomBottomBarItem(
     modifier: Modifier = Modifier,
-    imgResource: Int
+    imgResource: Int,
+    onClick: () -> Unit,
 ) {
     Image(
-        modifier = modifier,
+        modifier = modifier
+            .padding(end = 8.dp)
+            .clip(shape = RoundedCornerShape(33.dp))
+            .clickable(onClick = onClick),
         painter = painterResource(imgResource),
         contentDescription = ""
     )

@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import com.example.hw_together.ui.addnotescreen.components.AddNoteScreenContent
 
 @Composable
-fun AddNoteScreen (
+fun AddNoteScreen(
     navController: NavController,
     setBottomBarVisibility: (Boolean) -> Unit,
     bottomBarHeight: Dp
@@ -15,5 +15,5 @@ fun AddNoteScreen (
     LaunchedEffect(key1 = Unit) {
         setBottomBarVisibility(true)
     }
-    AddNoteScreenContent()
+    AddNoteScreenContent(bottomBarHeight = bottomBarHeight)
 }

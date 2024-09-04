@@ -18,6 +18,7 @@ data class CustomColors(
     val gray: Color = Color(0xFFD7D7D7),
     val darkGray: Color = Color(0xFF646464),
     val blueLagoon: Color = Color(0xFF806B00),
+    val rippleGrayTransparent:Color=Color(0x66D7D7D7)
 )
 
 internal val LocalColors = staticCompositionLocalOf { CustomColors() }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -63,12 +64,12 @@ fun AuthorizationLoginScreenContent(
             CustomBasicTextFieldAuthorization(
                 value = state.authorizationLoginUser.phone,
                 defaultValue = "Номер телефона",
-                onValueChange = { viewModel.phoneChange(it) }
+                onValueChange = remember { { viewModel.phoneChange(it) } }
             )
             CustomBasicTextFieldPassword(
                 value = state.authorizationLoginUser.passwordHashed,
                 defaultValue = "Пароль",
-                onValueChange = { viewModel.passwordChange(it) }
+                onValueChange = remember { { viewModel.passwordChange(it) } }
             )
         }
         Column(

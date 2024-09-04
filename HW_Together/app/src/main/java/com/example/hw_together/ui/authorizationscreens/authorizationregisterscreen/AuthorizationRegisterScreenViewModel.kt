@@ -1,15 +1,21 @@
 package com.example.hw_together.ui.authorizationscreens.authorizationregisterscreen
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.hw_together.domain.usecases.RegisterUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.orbitmvi.orbit.ContainerHost
-import org.orbitmvi.orbit.syntax.simple.intent
-import org.orbitmvi.orbit.syntax.simple.reduce
+import org.orbitmvi.orbit.annotation.OrbitExperimental
+
 import org.orbitmvi.orbit.viewmodel.container
 import javax.inject.Inject
 
@@ -25,25 +31,25 @@ class AuthorizationRegisterScreenViewModel @Inject constructor(
         AuthorizationRegisterState()
     )
 
-    fun nameChange(name: String) = intent {
+    fun nameChange(name: String) = blockingIntent {
         reduce {
             state.copy(authorizationRegisterUser = state.authorizationRegisterUser.copy(name = name))
         }
     }
 
-    fun surnameChange(surname: String) = intent {
+    fun surnameChange(surname: String) = blockingIntent {
         reduce {
             state.copy(authorizationRegisterUser = state.authorizationRegisterUser.copy(surname = surname))
         }
     }
 
-    fun phoneChange(phone: String) = intent {
+    fun phoneChange(phone: String) = blockingIntent {
         reduce {
             state.copy(authorizationRegisterUser = state.authorizationRegisterUser.copy(phone = phone))
         }
     }
 
-    fun passwordChange(password: String) = intent {
+    fun passwordChange(password: String) = blockingIntent {
         reduce {
             state.copy(
                 authorizationRegisterUser = state.authorizationRegisterUser.copy(

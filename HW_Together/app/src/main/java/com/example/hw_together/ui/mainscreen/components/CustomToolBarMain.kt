@@ -35,8 +35,7 @@ fun CustomToolBarMain(
             .padding(start = 16.dp, end = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = "Главная", style = LocalTypography.current.titleHeader)
-        Spacer(modifier = Modifier.weight(1f))
+        Text(modifier = Modifier.weight(1f), text = "Главная", style = LocalTypography.current.titleHeader)
         Image(
             painter = painterResource(id = R.drawable.ic_search),
             contentDescription = null

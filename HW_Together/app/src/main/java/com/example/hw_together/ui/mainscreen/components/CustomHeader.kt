@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,10 +40,10 @@ fun CustomHeader(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
+            modifier=Modifier.weight(1f),
             text = text,
             style = LocalTypography.current.bodyButtonAuthorization
         )
-        Spacer(modifier = Modifier.weight(1f))
         Spacer(
             modifier = Modifier
                 .width(1.dp)
@@ -51,6 +52,7 @@ fun CustomHeader(
         )
         Text(
             modifier = Modifier
+                .clip(shape = RoundedCornerShape(topEnd = 8.dp, bottomEnd = 8.dp))
                 .clickable(onClick = onClick)
                 .padding(horizontal = 12.dp, vertical = 8.dp),
             text = "Все",

@@ -44,7 +44,7 @@ fun MainScreenContent() {
                     .padding(top = 20.dp)
             ) {
                 CustomHeader(text = "Ваши курсы", onClick = {})
-                Spacer(modifier = Modifier.height(182.dp))
+                Spacer(modifier = Modifier.height(182.dp))//для будущего пейджера
                 CustomHeader(
                     modifier = Modifier.padding(top = 24.dp),
                     text = "Ваши заметки",
@@ -62,8 +62,8 @@ fun MainScreenContent() {
                 CustomNote(
                     modifier = Modifier.padding(top = 12.dp),
                     dateText = "12 июля",
-                    titleText = "Тест для текста в несколько строк. Это очень важно",
-                    bodyText = "нь важный момент. Его нужно проверять постоянно"
+                    titleText = "Тест для текста в несколько строк. Это очень важно оооооо",
+                    bodyText = "нь важный момент. Его нужно проверять постоянно оооооооо"
                 )
             }
         }

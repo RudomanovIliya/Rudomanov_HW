@@ -74,9 +74,9 @@ dependencies {
     implementation(libs.compose.navigation)
 
     //MVI
-    implementation("org.orbit-mvi:orbit-core:6.0.0")
-    implementation("org.orbit-mvi:orbit-viewmodel:6.0.0")
-    implementation("org.orbit-mvi:orbit-compose:6.0.0")
+    implementation("org.orbit-mvi:orbit-core:9.0.0")
+    implementation("org.orbit-mvi:orbit-viewmodel:9.0.0")
+    implementation("org.orbit-mvi:orbit-compose:9.0.0")
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
@@ -100,4 +100,9 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
     implementation ("com.google.code.gson:gson:2.8.8")
+
+    implementation("androidx.compose.material3:material3:1.3.0-rc01")
+
+    implementation(libs.coil)
+
 }
