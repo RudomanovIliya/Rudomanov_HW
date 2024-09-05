@@ -11,7 +11,13 @@ const val AUTHORIZATION_REGISTER_SCREEN_ROUTE = "authorization_register_screen_r
 
 fun NavController.navigateToRegisterScreen(
 ) {
-    this.navigate(AUTHORIZATION_REGISTER_SCREEN_ROUTE)
+    this.navigate(AUTHORIZATION_REGISTER_SCREEN_ROUTE) {
+        popUpTo(0) {
+            saveState = true
+        }
+        launchSingleTop = true
+        restoreState = true
+    }
 }
 
 fun NavGraphBuilder.authorizationRegisterScreen(

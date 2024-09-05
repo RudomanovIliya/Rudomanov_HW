@@ -11,7 +11,13 @@ const val AUTHORIZATION_LOGIN_SCREEN_ROUTE = "authorization_login_screen_route"
 
 fun NavController.navigateToLoginScreen(
 ) {
-    this.navigate(AUTHORIZATION_LOGIN_SCREEN_ROUTE)
+    this.navigate(AUTHORIZATION_LOGIN_SCREEN_ROUTE){
+        popUpTo(0){
+            saveState=true
+        }
+        launchSingleTop = true
+        restoreState = true
+    }
 }
 
 fun NavGraphBuilder.authorizationLoginScreen(
